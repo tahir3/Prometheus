@@ -30,30 +30,41 @@ public class Character_Select {
 					}input.nextLine();
 			}
 			if(response == 1) {
+				
 				Character_Warrior character = new Character_Warrior();
 				displayWarriorChars(character);
+				if(confirmCharacter()){
+					return character;
+				}
 				
-				return character;
 			}
 			else if(response == 2) {
 				Character_Orc character = new Character_Orc();
 				System.out.println("You have chosen to be an Orc");
-				return character;
+				if(confirmCharacter()){
+					return character;
+				}
 			}
 			else if(response == 3) {
 				Character_Wizard character = new Character_Wizard();
 				System.out.println("You have chosen to be a Wizard");
-				return character;
+				if(confirmCharacter()){
+					return character;
+				}
 			}
 			else if(response == 4) {
 				Character_Elf character = new Character_Elf();
 				System.out.println("You have chosen to be an Elf");
-				return character;
+				if(confirmCharacter()){
+					return character;
+				}
 			}
 			else if(response == 5) {
 				Character_Dwarf character = new Character_Dwarf();
 				System.out.println("You have chosen to be a Dwarf");
-				return character;
+				if(confirmCharacter()){
+					return character;
+				}
 			}
 			else {
 				System.out.println("Invalid Response. Please enter a number from the list above.");
@@ -62,7 +73,30 @@ public class Character_Select {
 			return null;
 			}
 	
-	       public static void displayWarriorChars (Character_Warrior warrior){			
+	       private static boolean confirmCharacter() {
+	    	   boolean character = false;
+	    		System.out.println("Would you like to continue with the character?Y/N");
+			    String confirm_flag = input.next();	
+			    if(confirm_flag.equalsIgnoreCase("Y")){				    	
+			    	character= true;
+			    }else  if(confirm_flag.equalsIgnoreCase("N")){				    	
+			    	character_Select();
+			    }else{
+			    	System.out.println("Please enter a valid inputY/N");
+			    	   confirm_flag = input.next();	
+			    	   if(confirm_flag.equalsIgnoreCase("Y")){				    	
+			    		   character= true;
+					    }else  if(confirm_flag.equalsIgnoreCase("N")){				    	
+					    	character_Select();
+					    }
+			    }
+				
+				return character;
+		
+		
+	}
+
+		public static void displayWarriorChars (Character_Warrior warrior){			
 		
 		    System.out.println("You have chosen to be a Warrior");
 		    if (warrior != null){	
@@ -97,5 +131,5 @@ public class Character_Select {
 		    System.out.format ("%10s%15s", warrior.magic, warrior.money);
 		    System.out.println ("");
 		    }
-	          }
+	      }
 		}
